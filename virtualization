@@ -1,0 +1,20 @@
+=====
+HowTo about virtualization in Linux
+=====
+
+
+=== VIRTUALICE x86 arch in ARM
+
+1. Create the qcow2 image of 20 GB to use on your x86_64 VM
+
+`qemu-img create -f qcow2 linux_vda.qcow2 20G`
+
+2. Create your new VM with an ISO and using your previous vda drive.
+
+`qemu-system-x86_64 -m 2G -smp 2 -accel hvf -accel tcg \
+ -hda linux_hd.qcow2 \
+ -cdrom fossapup64-9.5.iso -boot d`
+
+And that is how the magic works ;-)
+
+
